@@ -1,0 +1,21 @@
+{
+    "name": "grpc-ts-demo",
+    "version": "1.0.0",
+    "author": "Mike Christensen",
+    "license": "MIT",
+    "dependencies": {
+        "@typescript-eslint/eslint-plugin": "^2.19.0",
+        "@typescript-eslint/parser": "^2.19.0",
+        "eslint": "^6.8.0",
+        "grpc": "^1.24.2",
+        "grpc-tools": "^1.8.1",
+        "ts-protoc-gen": "^0.12.0",
+        "typescript": "^3.7.5"
+    },
+    "scripts": {
+        "lint": "yarn run eslint --fix --ext .ts src",
+        "prebuild": "yarn run lint",
+        "build": "sh build.sh ./songs.proto ./src/proto && yarn run tsc",
+        "start": "node ./dist/index.js"
+    }
+}

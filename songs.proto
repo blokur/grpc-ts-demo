@@ -1,0 +1,25 @@
+syntax = "proto3";
+
+package songs;
+
+import "google/protobuf/empty.proto";
+
+message Song {
+  int32 id = 1;
+  string title = 2;
+  string artist = 3;
+}
+
+message Comment {
+  string username = 1;
+  string body = 2;
+}
+
+message Reaction { bool like = 1; }
+
+service Songs {
+  rpc GetSong(google.protobuf.Empty) returns (Song);
+  rpc AddSongs(stream Song) returns (google.protobuf.Empty);
+  rpc GetComments(Song) returns (stream Comment);
+  rpc LiveReactions(stream Reaction) returns (stream Reaction);
+}
