@@ -27,17 +27,6 @@ function deserialize_songs_Comment(buffer_arg) {
   return songs_pb.Comment.deserializeBinary(new Uint8Array(buffer_arg));
 }
 
-function serialize_songs_Reaction(arg) {
-  if (!(arg instanceof songs_pb.Reaction)) {
-    throw new Error('Expected argument of type songs.Reaction');
-  }
-  return Buffer.from(arg.serializeBinary());
-}
-
-function deserialize_songs_Reaction(buffer_arg) {
-  return songs_pb.Reaction.deserializeBinary(new Uint8Array(buffer_arg));
-}
-
 function serialize_songs_Song(arg) {
   if (!(arg instanceof songs_pb.Song)) {
     throw new Error('Expected argument of type songs.Song');
@@ -73,8 +62,8 @@ var SongsService = exports.SongsService = {
     responseSerialize: serialize_google_protobuf_Empty,
     responseDeserialize: deserialize_google_protobuf_Empty,
   },
-  getComments: {
-    path: '/songs.Songs/GetComments',
+  getChat: {
+    path: '/songs.Songs/GetChat',
     requestStream: false,
     responseStream: true,
     requestType: songs_pb.Song,
@@ -84,16 +73,16 @@ var SongsService = exports.SongsService = {
     responseSerialize: serialize_songs_Comment,
     responseDeserialize: deserialize_songs_Comment,
   },
-  liveReactions: {
-    path: '/songs.Songs/LiveReactions',
+  liveChat: {
+    path: '/songs.Songs/LiveChat',
     requestStream: true,
     responseStream: true,
-    requestType: songs_pb.Reaction,
-    responseType: songs_pb.Reaction,
-    requestSerialize: serialize_songs_Reaction,
-    requestDeserialize: deserialize_songs_Reaction,
-    responseSerialize: serialize_songs_Reaction,
-    responseDeserialize: deserialize_songs_Reaction,
+    requestType: songs_pb.Comment,
+    responseType: songs_pb.Comment,
+    requestSerialize: serialize_songs_Comment,
+    requestDeserialize: deserialize_songs_Comment,
+    responseSerialize: serialize_songs_Comment,
+    responseDeserialize: deserialize_songs_Comment,
   },
 };
 

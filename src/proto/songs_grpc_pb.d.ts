@@ -11,8 +11,8 @@ import * as google_protobuf_empty_pb from "google-protobuf/google/protobuf/empty
 interface ISongsService extends grpc.ServiceDefinition<grpc.UntypedServiceImplementation> {
     getSong: ISongsService_IGetSong;
     addSongs: ISongsService_IAddSongs;
-    getComments: ISongsService_IGetComments;
-    liveReactions: ISongsService_ILiveReactions;
+    getChat: ISongsService_IGetChat;
+    liveChat: ISongsService_ILiveChat;
 }
 
 interface ISongsService_IGetSong extends grpc.MethodDefinition<google_protobuf_empty_pb.Empty, songs_pb.Song> {
@@ -33,8 +33,8 @@ interface ISongsService_IAddSongs extends grpc.MethodDefinition<songs_pb.Song, g
     responseSerialize: grpc.serialize<google_protobuf_empty_pb.Empty>;
     responseDeserialize: grpc.deserialize<google_protobuf_empty_pb.Empty>;
 }
-interface ISongsService_IGetComments extends grpc.MethodDefinition<songs_pb.Song, songs_pb.Comment> {
-    path: string; // "/songs.Songs/GetComments"
+interface ISongsService_IGetChat extends grpc.MethodDefinition<songs_pb.Song, songs_pb.Comment> {
+    path: string; // "/songs.Songs/GetChat"
     requestStream: boolean; // false
     responseStream: boolean; // true
     requestSerialize: grpc.serialize<songs_pb.Song>;
@@ -42,14 +42,14 @@ interface ISongsService_IGetComments extends grpc.MethodDefinition<songs_pb.Song
     responseSerialize: grpc.serialize<songs_pb.Comment>;
     responseDeserialize: grpc.deserialize<songs_pb.Comment>;
 }
-interface ISongsService_ILiveReactions extends grpc.MethodDefinition<songs_pb.Reaction, songs_pb.Reaction> {
-    path: string; // "/songs.Songs/LiveReactions"
+interface ISongsService_ILiveChat extends grpc.MethodDefinition<songs_pb.Comment, songs_pb.Comment> {
+    path: string; // "/songs.Songs/LiveChat"
     requestStream: boolean; // true
     responseStream: boolean; // true
-    requestSerialize: grpc.serialize<songs_pb.Reaction>;
-    requestDeserialize: grpc.deserialize<songs_pb.Reaction>;
-    responseSerialize: grpc.serialize<songs_pb.Reaction>;
-    responseDeserialize: grpc.deserialize<songs_pb.Reaction>;
+    requestSerialize: grpc.serialize<songs_pb.Comment>;
+    requestDeserialize: grpc.deserialize<songs_pb.Comment>;
+    responseSerialize: grpc.serialize<songs_pb.Comment>;
+    responseDeserialize: grpc.deserialize<songs_pb.Comment>;
 }
 
 export const SongsService: ISongsService;
@@ -57,8 +57,8 @@ export const SongsService: ISongsService;
 export interface ISongsServer {
     getSong: grpc.handleUnaryCall<google_protobuf_empty_pb.Empty, songs_pb.Song>;
     addSongs: grpc.handleClientStreamingCall<songs_pb.Song, google_protobuf_empty_pb.Empty>;
-    getComments: grpc.handleServerStreamingCall<songs_pb.Song, songs_pb.Comment>;
-    liveReactions: grpc.handleBidiStreamingCall<songs_pb.Reaction, songs_pb.Reaction>;
+    getChat: grpc.handleServerStreamingCall<songs_pb.Song, songs_pb.Comment>;
+    liveChat: grpc.handleBidiStreamingCall<songs_pb.Comment, songs_pb.Comment>;
 }
 
 export interface ISongsClient {
@@ -69,11 +69,11 @@ export interface ISongsClient {
     addSongs(metadata: grpc.Metadata, callback: (error: grpc.ServiceError | null, response: google_protobuf_empty_pb.Empty) => void): grpc.ClientWritableStream<songs_pb.Song>;
     addSongs(options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: google_protobuf_empty_pb.Empty) => void): grpc.ClientWritableStream<songs_pb.Song>;
     addSongs(metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: google_protobuf_empty_pb.Empty) => void): grpc.ClientWritableStream<songs_pb.Song>;
-    getComments(request: songs_pb.Song, options?: Partial<grpc.CallOptions>): grpc.ClientReadableStream<songs_pb.Comment>;
-    getComments(request: songs_pb.Song, metadata?: grpc.Metadata, options?: Partial<grpc.CallOptions>): grpc.ClientReadableStream<songs_pb.Comment>;
-    liveReactions(): grpc.ClientDuplexStream<songs_pb.Reaction, songs_pb.Reaction>;
-    liveReactions(options: Partial<grpc.CallOptions>): grpc.ClientDuplexStream<songs_pb.Reaction, songs_pb.Reaction>;
-    liveReactions(metadata: grpc.Metadata, options?: Partial<grpc.CallOptions>): grpc.ClientDuplexStream<songs_pb.Reaction, songs_pb.Reaction>;
+    getChat(request: songs_pb.Song, options?: Partial<grpc.CallOptions>): grpc.ClientReadableStream<songs_pb.Comment>;
+    getChat(request: songs_pb.Song, metadata?: grpc.Metadata, options?: Partial<grpc.CallOptions>): grpc.ClientReadableStream<songs_pb.Comment>;
+    liveChat(): grpc.ClientDuplexStream<songs_pb.Comment, songs_pb.Comment>;
+    liveChat(options: Partial<grpc.CallOptions>): grpc.ClientDuplexStream<songs_pb.Comment, songs_pb.Comment>;
+    liveChat(metadata: grpc.Metadata, options?: Partial<grpc.CallOptions>): grpc.ClientDuplexStream<songs_pb.Comment, songs_pb.Comment>;
 }
 
 export class SongsClient extends grpc.Client implements ISongsClient {
@@ -85,8 +85,8 @@ export class SongsClient extends grpc.Client implements ISongsClient {
     public addSongs(metadata: grpc.Metadata, callback: (error: grpc.ServiceError | null, response: google_protobuf_empty_pb.Empty) => void): grpc.ClientWritableStream<songs_pb.Song>;
     public addSongs(options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: google_protobuf_empty_pb.Empty) => void): grpc.ClientWritableStream<songs_pb.Song>;
     public addSongs(metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: google_protobuf_empty_pb.Empty) => void): grpc.ClientWritableStream<songs_pb.Song>;
-    public getComments(request: songs_pb.Song, options?: Partial<grpc.CallOptions>): grpc.ClientReadableStream<songs_pb.Comment>;
-    public getComments(request: songs_pb.Song, metadata?: grpc.Metadata, options?: Partial<grpc.CallOptions>): grpc.ClientReadableStream<songs_pb.Comment>;
-    public liveReactions(options?: Partial<grpc.CallOptions>): grpc.ClientDuplexStream<songs_pb.Reaction, songs_pb.Reaction>;
-    public liveReactions(metadata?: grpc.Metadata, options?: Partial<grpc.CallOptions>): grpc.ClientDuplexStream<songs_pb.Reaction, songs_pb.Reaction>;
+    public getChat(request: songs_pb.Song, options?: Partial<grpc.CallOptions>): grpc.ClientReadableStream<songs_pb.Comment>;
+    public getChat(request: songs_pb.Song, metadata?: grpc.Metadata, options?: Partial<grpc.CallOptions>): grpc.ClientReadableStream<songs_pb.Comment>;
+    public liveChat(options?: Partial<grpc.CallOptions>): grpc.ClientDuplexStream<songs_pb.Comment, songs_pb.Comment>;
+    public liveChat(metadata?: grpc.Metadata, options?: Partial<grpc.CallOptions>): grpc.ClientDuplexStream<songs_pb.Comment, songs_pb.Comment>;
 }

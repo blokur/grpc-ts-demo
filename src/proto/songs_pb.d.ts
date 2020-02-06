@@ -37,6 +37,9 @@ export namespace Song {
 }
 
 export class Comment extends jspb.Message { 
+    getSongId(): number;
+    setSongId(value: number): void;
+
     getUsername(): string;
     setUsername(value: string): void;
 
@@ -56,28 +59,8 @@ export class Comment extends jspb.Message {
 
 export namespace Comment {
     export type AsObject = {
+        songId: number,
         username: string,
         body: string,
-    }
-}
-
-export class Reaction extends jspb.Message { 
-    getLike(): boolean;
-    setLike(value: boolean): void;
-
-
-    serializeBinary(): Uint8Array;
-    toObject(includeInstance?: boolean): Reaction.AsObject;
-    static toObject(includeInstance: boolean, msg: Reaction): Reaction.AsObject;
-    static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
-    static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
-    static serializeBinaryToWriter(message: Reaction, writer: jspb.BinaryWriter): void;
-    static deserializeBinary(bytes: Uint8Array): Reaction;
-    static deserializeBinaryFromReader(message: Reaction, reader: jspb.BinaryReader): Reaction;
-}
-
-export namespace Reaction {
-    export type AsObject = {
-        like: boolean,
     }
 }

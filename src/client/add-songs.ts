@@ -47,7 +47,7 @@ async function shouldAddMore(): Promise<boolean> {
 }
 
 export default {
-    command: 'add',
+    command: 'add-songs',
     describe: 'Add songs',
     builder: {},
     handler: async (): Promise<void> => {

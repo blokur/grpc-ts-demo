@@ -1,9 +1,10 @@
 import grpc from 'grpc';
 import { Empty } from 'google-protobuf/google/protobuf/empty_pb';
-import { Song, Reaction } from '../proto/songs_pb';
+import { Song, Comment } from '../proto/songs_pb';
 import { ISongsServer, SongsService } from '../proto/songs_grpc_pb';
 import getSong from './get-song';
 import addSong from './add-song';
+import getChat from './get-chat';
 
 class SongsServer implements ISongsServer {
     getSong(call: grpc.ServerUnaryCall<Empty>, callback: grpc.sendUnaryData<Song>): void {
@@ -15,11 +16,16 @@ class SongsServer implements ISongsServer {
         });
         call.on('end', () => callback(null, new Empty()));
     }
-    getComments(call: grpc.ServerWritableStream<Song>): void {
-        console.log('getComments', call);
+    async getChat(call: grpc.ServerWritableStream<Song>): Promise<void> {
+        const song = call.request as Song;
+        const comments = await getChat(song.getId());
+        for (const comment of comments) {
+            call.write(comment);
+        }
+        call.end();
     }
-    liveReactions(call: grpc.ServerDuplexStream<Reaction, Reaction>): void {
-        console.log('liveReactions', call);
+    liveChat(call: grpc.ServerDuplexStream<Comment, Comment>): void {
+        console.log('liveChat', call);
     }
 }
 
