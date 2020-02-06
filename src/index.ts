@@ -1,5 +1,8 @@
-function main(): void {
-    console.log('Hello, world!');
-}
+import yargs from 'yargs';
+import serve from './server/index';
+import getSong from './client/get-song';
 
-main();
+yargs
+    .command(serve)
+    .command(getSong)
+    .help().argv;

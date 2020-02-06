@@ -18,8 +18,8 @@ message Comment {
 message Reaction { bool like = 1; }
 
 service Songs {
-  rpc GetSong(google.protobuf.Empty) returns (Song);
-  rpc AddSongs(stream Song) returns (google.protobuf.Empty);
-  rpc GetComments(Song) returns (stream Comment);
-  rpc LiveReactions(stream Reaction) returns (stream Reaction);
+  rpc GetSong(google.protobuf.Empty) returns (Song) {};
+  rpc AddSongs(stream Song) returns (google.protobuf.Empty) {};
+  rpc GetComments(Song) returns (stream Comment) {};
+  rpc LiveReactions(stream Reaction) returns (stream Reaction) {};
 }
