@@ -4,6 +4,8 @@
     "author": "Mike Christensen",
     "license": "MIT",
     "dependencies": {
+        "@types/inquirer": "^6.5.0",
+        "@types/lowdb": "^1.0.9",
         "@types/yargs": "^15.0.3",
         "@typescript-eslint/eslint-plugin": "^2.19.0",
         "@typescript-eslint/parser": "^2.19.0",
@@ -12,6 +14,9 @@
         "grpc": "^1.24.2",
         "grpc-tools": "^1.8.1",
         "grpc_tools_node_protoc_ts": "^2.5.10",
+        "inquirer": "^7.0.4",
+        "lodash": "^4.17.15",
+        "lowdb": "^1.0.0",
         "typescript": "^3.7.5",
         "yargs": "^15.1.0"
     },

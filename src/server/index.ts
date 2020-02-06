@@ -1,18 +1,19 @@
 import grpc from 'grpc';
-import * as google_protobuf_empty_pb from 'google-protobuf/google/protobuf/empty_pb';
+import { Empty } from 'google-protobuf/google/protobuf/empty_pb';
 import { Song, Reaction } from '../proto/songs_pb';
 import { ISongsServer, SongsService } from '../proto/songs_grpc_pb';
 import getSong from './get-song';
+import addSong from './add-song';
 
 class SongsServer implements ISongsServer {
-    getSong(call: grpc.ServerUnaryCall<google_protobuf_empty_pb.Empty>, callback: grpc.sendUnaryData<Song>): void {
+    getSong(call: grpc.ServerUnaryCall<Empty>, callback: grpc.sendUnaryData<Song>): void {
         callback(null, getSong());
     }
-    addSongs(
-        call: grpc.ServerReadableStream<Song>,
-        callback: grpc.sendUnaryData<google_protobuf_empty_pb.Empty>,
-    ): void {
-        console.log('addSongs', call, callback);
+    addSongs(call: grpc.ServerReadableStream<Song>, callback: grpc.sendUnaryData<Empty>): void {
+        call.on('data', (song: Song) => {
+            addSong(song);
+        });
+        call.on('end', () => callback(null, new Empty()));
     }
     getComments(call: grpc.ServerWritableStream<Song>): void {
         console.log('getComments', call);
