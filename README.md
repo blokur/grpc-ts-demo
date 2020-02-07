@@ -2,11 +2,13 @@
 
 🎵 Music-themed demo of a _fully typed_ gRPC client and server implementation in TypeScript. It implements each RPC type (unary, client streaming, server streaming and bidirectional), and uses type definitions generated with [`grpc_tools_node_protoc_ts`](https://github.com/agreatfool/grpc_tools_node_protoc_ts).
 
-The demo application takes the form of a CLI tool that allows you to manage and discuss your favourite songs. [Watch demo]().
+![gRPC TypeScript](https://blokur-public.s3-eu-west-1.amazonaws.com/images/grpc-typescript.png)
+
+The demo application takes the form of a CLI tool that allows you to manage and discuss your favourite songs. [Watch demo](https://blokur-public.s3-eu-west-1.amazonaws.com/videos/grpc-ts-demo.mp4).
 
 Read the accompanying blog post [here]().
 
-![gRPC TypeScript](https://blokur-public.s3-eu-west-1.amazonaws.com/images/grpc-typescript.png)
+[![Watch Demo](https://blokur-public.s3-eu-west-1.amazonaws.com/images/grpc-ts-demo-screenshot.png)](https://blokur-public.s3-eu-west-1.amazonaws.com/videos/grpc-ts-demo.mp4)
 
 ## Install
 
