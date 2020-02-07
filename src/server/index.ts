@@ -9,15 +9,18 @@ import { addComment, registerListener } from './live-chat';
 
 class SongsServer implements ISongsServer {
     getSong(call: grpc.ServerUnaryCall<Empty>, callback: grpc.sendUnaryData<Song>): void {
+        console.log(`${new Date().toISOString()}    getSong`);
         callback(null, getSong());
     }
     addSongs(call: grpc.ServerReadableStream<Song>, callback: grpc.sendUnaryData<Empty>): void {
+        console.log(`${new Date().toISOString()}    addSongs`);
         call.on('data', (song: Song) => {
             addSong(song);
         });
         call.on('end', () => callback(null, new Empty()));
     }
     async getChat(call: grpc.ServerWritableStream<Song>): Promise<void> {
+        console.log(`${new Date().toISOString()}    getChat`);
         const song = call.request as Song;
         const comments = await getChat(song.getId());
         for (const comment of comments) {
@@ -26,6 +29,7 @@ class SongsServer implements ISongsServer {
         call.end();
     }
     liveChat(call: grpc.ServerDuplexStream<Comment, Comment>): void {
+        console.log(`${new Date().toISOString()}    liveChat`);
         registerListener(comment => call.write(comment));
         call.on('data', (comment: Comment) => {
             addComment(comment);
