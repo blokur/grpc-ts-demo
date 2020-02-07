@@ -23,6 +23,7 @@
     "scripts": {
         "lint": "yarn run eslint --fix --ext .ts src",
         "prebuild": "yarn run lint",
+        "clean": "rm -rf ./src/proto && mkdir -p ./src/proto && rm -f chat-*.txt && rm -f db.json",
         "build": "sh ./scripts/build-protos.sh ./songs.proto ./src/proto && yarn run tsc",
         "start": "PORT=6789 node ./dist/index.js"
     }

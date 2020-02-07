@@ -5,7 +5,6 @@ cd ${BASEDIR}/../
 
 PROTO_DEST=./src/proto
 
-rm -rf ${PROTO_DEST}
 mkdir -p ${PROTO_DEST}
 
 # JavaScript code generation

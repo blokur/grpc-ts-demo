@@ -5,6 +5,7 @@ import { ISongsServer, SongsService } from '../proto/songs_grpc_pb';
 import getSong from './get-song';
 import addSong from './add-song';
 import getChat from './get-chat';
+import { addComment, registerListener } from './live-chat';
 
 class SongsServer implements ISongsServer {
     getSong(call: grpc.ServerUnaryCall<Empty>, callback: grpc.sendUnaryData<Song>): void {
@@ -25,7 +26,11 @@ class SongsServer implements ISongsServer {
         call.end();
     }
     liveChat(call: grpc.ServerDuplexStream<Comment, Comment>): void {
-        console.log('liveChat', call);
+        registerListener(comment => call.write(comment));
+        call.on('data', (comment: Comment) => {
+            addComment(comment);
+        });
+        call.on('end', () => call.end());
     }
 }
 
