@@ -58,7 +58,7 @@ db.defaults({
     ],
     comments: [
         {
-            songId: 12,
+            songId: 2,
             username: 'Emily Watson',
             body: `Behind the window was a reflection that only instilled fear.`,
         },
@@ -73,7 +73,7 @@ db.defaults({
             body: `Don't piss in my garden and tell me you're trying to help my plants grow.`,
         },
         {
-            songId: 16,
+            songId: 6,
             username: 'Sarah Webb',
             body: `I like going out to parties with friends or watching TV.`,
         },
@@ -83,12 +83,12 @@ db.defaults({
             body: `When motorists sped in and out of traffic, all she could think of was those in need of a transplant.`,
         },
         {
-            songId: 12,
+            songId: 2,
             username: 'Andy Fowler',
             body: `The memory we used to share is no longer coherent.`,
         },
         {
-            songId: 10,
+            songId: 1,
             username: 'Doug Stanley',
             body: `She works two jobs to make ends meet; at least, that was her reason for not having time to join us.`,
         },
@@ -103,27 +103,27 @@ db.defaults({
             body: `We all agreed; it was a magnificent evening.`,
         },
         {
-            songId: 18,
+            songId: 8,
             username: 'Olivia Washington',
             body: `The river stole the gods.`,
         },
         {
-            songId: 11,
+            songId: 1,
             username: 'Tanya Murray',
             body: `She found his complete dullness interesting.`,
         },
         {
-            songId: 0,
+            songId: 9,
             username: 'Lola Rodriquez',
             body: `The knives were out and she was sharpening hers.`,
         },
         {
-            songId: 11,
+            songId: 1,
             username: 'Sheldon Campbell',
             body: `The random sentence generator generated a random sentence about a random sentence.`,
         },
         {
-            songId: 18,
+            songId: 8,
             username: 'Michelle Wise',
             body: `Malls are great places to shop; I can find everything I need under one roof.`,
         },
@@ -133,7 +133,7 @@ db.defaults({
             body: `We have a lot of rain in June.`,
         },
         {
-            songId: 10,
+            songId: 1,
             username: 'Bobbie Berry',
             body: `He was disappointed when he found the beach to be so sandy and the sun so sunny.`,
         },
