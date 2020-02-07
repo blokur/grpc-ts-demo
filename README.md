@@ -2,7 +2,7 @@
 
 Music-themed demo of a _fully typed_ gRPC client and server implementation in TypeScript. It implements each RPC type (unary, client streaming, server streaming and bidirectional), and uses type definitions generated with [`grpc_tools_node_protoc_ts`](https://github.com/agreatfool/grpc_tools_node_protoc_ts).
 
-![Yoda](https://tenor.com/SW8A.gif)
+![Yoda](https://thumbs.gfycat.com/BeneficialImaginativeCurlew-size_restricted.gif)
 
 The demo application takes the form of a CLI tool that allows you to manage and discuss your favourite songs. [Watch demo]().
 
