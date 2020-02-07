@@ -6,5 +6,6 @@ export default function(song: Song): void {
     // SEE: https://github.com/typicode/lowdb/issues/349
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const dbSongs = db.get('songs') as any;
+    song.setId(dbSongs.value().length + 1);
     dbSongs.push(song.toObject()).write();
 }
