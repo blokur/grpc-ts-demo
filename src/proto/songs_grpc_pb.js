@@ -1,6 +1,7 @@
 // GENERATED CODE -- DO NOT EDIT!
 
 'use strict';
+var grpc = require('@grpc/grpc-js');
 var songs_pb = require('./songs_pb.js');
 var google_protobuf_empty_pb = require('google-protobuf/google/protobuf/empty_pb.js');
 
@@ -38,7 +39,7 @@ function deserialize_songs_Song(buffer_arg) {
 }
 
 
-var SongsService = exports['songs.Songs'] = {
+var SongsService = exports.SongsService = {
   getSong: {
     path: '/songs.Songs/GetSong',
     requestStream: false,
@@ -85,3 +86,4 @@ var SongsService = exports['songs.Songs'] = {
   },
 };
 
+exports.SongsClient = grpc.makeGenericClientConstructor(SongsService);
