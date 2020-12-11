@@ -4,7 +4,8 @@
 /* tslint:disable */
 /* eslint-disable */
 
-import * as grpc from "grpc";
+import * as grpc from "@grpc/grpc-js";
+import {handleClientStreamingCall} from "@grpc/grpc-js/build/src/server-call";
 import * as songs_pb from "./songs_pb";
 import * as google_protobuf_empty_pb from "google-protobuf/google/protobuf/empty_pb";
 
@@ -56,7 +57,7 @@ export const SongsService: ISongsService;
 
 export interface ISongsServer {
     getSong: grpc.handleUnaryCall<google_protobuf_empty_pb.Empty, songs_pb.Song>;
-    addSongs: grpc.handleClientStreamingCall<songs_pb.Song, google_protobuf_empty_pb.Empty>;
+    addSongs: handleClientStreamingCall<songs_pb.Song, google_protobuf_empty_pb.Empty>;
     getChat: grpc.handleServerStreamingCall<songs_pb.Song, songs_pb.Comment>;
     liveChat: grpc.handleBidiStreamingCall<songs_pb.Comment, songs_pb.Comment>;
 }
