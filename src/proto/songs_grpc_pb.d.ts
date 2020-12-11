@@ -17,36 +17,36 @@ interface ISongsService extends grpc.ServiceDefinition<grpc.UntypedServiceImplem
 }
 
 interface ISongsService_IGetSong extends grpc.MethodDefinition<google_protobuf_empty_pb.Empty, songs_pb.Song> {
-    path: string; // "/songs.Songs/GetSong"
-    requestStream: boolean; // false
-    responseStream: boolean; // false
+    path: "/songs.Songs/GetSong";
+    requestStream: false;
+    responseStream: false;
     requestSerialize: grpc.serialize<google_protobuf_empty_pb.Empty>;
     requestDeserialize: grpc.deserialize<google_protobuf_empty_pb.Empty>;
     responseSerialize: grpc.serialize<songs_pb.Song>;
     responseDeserialize: grpc.deserialize<songs_pb.Song>;
 }
 interface ISongsService_IAddSongs extends grpc.MethodDefinition<songs_pb.Song, google_protobuf_empty_pb.Empty> {
-    path: string; // "/songs.Songs/AddSongs"
-    requestStream: boolean; // true
-    responseStream: boolean; // false
+    path: "/songs.Songs/AddSongs";
+    requestStream: true;
+    responseStream: false;
     requestSerialize: grpc.serialize<songs_pb.Song>;
     requestDeserialize: grpc.deserialize<songs_pb.Song>;
     responseSerialize: grpc.serialize<google_protobuf_empty_pb.Empty>;
     responseDeserialize: grpc.deserialize<google_protobuf_empty_pb.Empty>;
 }
 interface ISongsService_IGetChat extends grpc.MethodDefinition<songs_pb.Song, songs_pb.Comment> {
-    path: string; // "/songs.Songs/GetChat"
-    requestStream: boolean; // false
-    responseStream: boolean; // true
+    path: "/songs.Songs/GetChat";
+    requestStream: false;
+    responseStream: true;
     requestSerialize: grpc.serialize<songs_pb.Song>;
     requestDeserialize: grpc.deserialize<songs_pb.Song>;
     responseSerialize: grpc.serialize<songs_pb.Comment>;
     responseDeserialize: grpc.deserialize<songs_pb.Comment>;
 }
 interface ISongsService_ILiveChat extends grpc.MethodDefinition<songs_pb.Comment, songs_pb.Comment> {
-    path: string; // "/songs.Songs/LiveChat"
-    requestStream: boolean; // true
-    responseStream: boolean; // true
+    path: "/songs.Songs/LiveChat";
+    requestStream: true;
+    responseStream: true;
     requestSerialize: grpc.serialize<songs_pb.Comment>;
     requestDeserialize: grpc.deserialize<songs_pb.Comment>;
     responseSerialize: grpc.serialize<songs_pb.Comment>;
@@ -78,7 +78,7 @@ export interface ISongsClient {
 }
 
 export class SongsClient extends grpc.Client implements ISongsClient {
-    constructor(address: string, credentials: grpc.ChannelCredentials, options?: object);
+    constructor(address: string, credentials: grpc.ChannelCredentials, options?: Partial<grpc.ClientOptions>);
     public getSong(request: google_protobuf_empty_pb.Empty, callback: (error: grpc.ServiceError | null, response: songs_pb.Song) => void): grpc.ClientUnaryCall;
     public getSong(request: google_protobuf_empty_pb.Empty, metadata: grpc.Metadata, callback: (error: grpc.ServiceError | null, response: songs_pb.Song) => void): grpc.ClientUnaryCall;
     public getSong(request: google_protobuf_empty_pb.Empty, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: songs_pb.Song) => void): grpc.ClientUnaryCall;

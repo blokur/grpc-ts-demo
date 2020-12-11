@@ -9,13 +9,13 @@ import * as google_protobuf_empty_pb from "google-protobuf/google/protobuf/empty
 
 export class Song extends jspb.Message { 
     getId(): number;
-    setId(value: number): void;
+    setId(value: number): Song;
 
     getTitle(): string;
-    setTitle(value: string): void;
+    setTitle(value: string): Song;
 
     getArtist(): string;
-    setArtist(value: string): void;
+    setArtist(value: string): Song;
 
 
     serializeBinary(): Uint8Array;
@@ -38,13 +38,13 @@ export namespace Song {
 
 export class Comment extends jspb.Message { 
     getSongId(): number;
-    setSongId(value: number): void;
+    setSongId(value: number): Comment;
 
     getUsername(): string;
-    setUsername(value: string): void;
+    setUsername(value: string): Comment;
 
     getBody(): string;
-    setBody(value: string): void;
+    setBody(value: string): Comment;
 
 
     serializeBinary(): Uint8Array;

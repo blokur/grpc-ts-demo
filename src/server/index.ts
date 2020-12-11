@@ -2,8 +2,7 @@ import * as grpc from '@grpc/grpc-js';
 import { sendUnaryData } from '@grpc/grpc-js/build/src/server-call';
 import { Empty } from 'google-protobuf/google/protobuf/empty_pb';
 import { Song, Comment } from '../proto/songs_pb';
-import { ISongsServer } from '../proto/songs_grpc_pb';
-import * as songsGrpcPb from '../proto/songs_grpc_pb';
+import { ISongsServer, SongsService } from '../proto/songs_grpc_pb';
 import getSong from './get-song';
 import addSong from './add-song';
 import getChat from './get-chat';
@@ -43,7 +42,7 @@ class SongsServer implements ISongsServer {
 function serve(): void {
     const server = new grpc.Server();
     // @ts-ignore
-    server.addService(songsGrpcPb['songs.Songs'], new SongsServer());
+    server.addService(SongsService, new SongsServer());
     server.bindAsync(`localhost:${process.env.PORT}`, grpc.ServerCredentials.createInsecure(), (err, port) => {
         if (err) {
             throw err;
