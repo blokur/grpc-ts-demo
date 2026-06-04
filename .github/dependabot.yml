@@ -1,0 +1,50 @@
+# Group Dependabot SECURITY-update PRs into one PR per ecosystem (per repo) so the
+# fix-PR volume stays manageable for reviewers. Version updates are intentionally
+# OFF (open-pull-requests-limit: 0) — only vulnerability fixes open PRs, and they
+# arrive grouped. (Verified against GitHub docs: limit 0 suppresses version-update
+# PRs while security updates still fire and group via applies-to: security-updates.)
+version: 2
+updates:
+  - package-ecosystem: "gomod"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+    open-pull-requests-limit: 0
+    groups:
+      security:
+        applies-to: security-updates
+        patterns: ["*"]
+    labels: ["dependencies"]
+
+  - package-ecosystem: "npm"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+    open-pull-requests-limit: 0
+    groups:
+      security:
+        applies-to: security-updates
+        patterns: ["*"]
+    labels: ["dependencies"]
+
+  - package-ecosystem: "docker"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+    open-pull-requests-limit: 0
+    groups:
+      security:
+        applies-to: security-updates
+        patterns: ["*"]
+    labels: ["dependencies"]
+
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+    open-pull-requests-limit: 0
+    groups:
+      security:
+        applies-to: security-updates
+        patterns: ["*"]
+    labels: ["dependencies"]
